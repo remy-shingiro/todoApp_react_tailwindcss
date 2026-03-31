@@ -17,6 +17,10 @@ export default function App () {
     setTodo([...todo, newTodo]);
     setInPut('');
   }
+
+  // function Toggle(){
+  //   const toggleTodos = todo.filter(todo.completed === )
+  // }
  
   return (
     <>
@@ -36,7 +40,26 @@ export default function App () {
 
          <button className="bg-blue-800 rounded-3xl w-15"
          onClick={AddFunction}> Add +</button>
+          {/* Todos container */}
+         
       </div>
+      <div className="pl-70 pt-5">
+          {todo.map((n) => (
+            <div key={n.id} className="flex gap-3 pt-5">
+              <input
+              type="checkbox"
+              checked={n.completed}
+               >
+
+               </input>
+               {n.text}
+
+               <button className="bg-red-600 rounded-2xl w-10">🗑️</button>
+            </div>
+            
+            
+          ))}
+         </div>
     </>
   )
 };
