@@ -18,10 +18,20 @@ export default function App () {
     setInPut('');
   }
 
-  // function Toggle(){
-  //   const toggleTodos = todo.filter(todo.completed === )
-  // }
- 
+  function toggleTodo (id) {
+    const allTodos = todo.map((item)=>{
+      if(item.id === id) {return {...item, completed: !item.completed}
+    }
+    return item;
+    })
+    setTodo(allTodos);
+  }
+  function deleteTodo(id) {
+    const filteredTodos = todo.filter((item)=> item.id !==id);
+    setTodo(filteredTodos)
+  }
+  
+
   return (
     <>
       <div className="flex items-center justify-center">
@@ -49,12 +59,16 @@ export default function App () {
               <input
               type="checkbox"
               checked={n.completed}
+              onChange={()=> toggleTodo(n.id)}
                >
-
+                
+                
                </input>
-               {n.text}
+               <p className={n.completed ? "line-through text-pink-600" : ''}>{n.text}</p>
 
-               <button className="bg-red-600 rounded-2xl w-10">🗑️</button>
+               <button className="bg-red-600 rounded-2xl w-10"
+               onClick={()=> deleteTodo(n.id)}
+               >🗑️</button>
             </div>
             
             
